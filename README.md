@@ -49,7 +49,8 @@ The procedure captures information such as the session ID, status, login, host, 
 *Ref 1: Stored Procedure*
 This screenshot shows the SQL Server session and request information used to monitor currently executing queries.
 
-![SQL Server Active Request Monitoring](screenshots/01-active-request-monitoring.png)
+![Stored Procedure](https://github.com/Vishnupd/SQL-Server-Long-Running-Query-Monitoring-/blob/main/SP_1.png)
+![Stored Procedure](https://github.com/Vishnupd/SQL-Server-Long-Running-Query-Monitoring-/blob/main/SP_2.png)
 
 ### 2. Identify Long-Running Queries
 
@@ -62,21 +63,26 @@ WHERE st.text IS NOT NULL
 
 The `total_elapsed_time` value is converted from milliseconds to seconds before applying the threshold.
 
-*Ref 2: Long-Running Query Detection*
+*Ref 2.1: Creating a Long Running Query Intentionally with WAITFOR DELAY as an Exmaple*
+This screenshot shows intentionally creating long running query.
+
+![Long-Running Query Creation](https://github.com/Vishnupd/SQL-Server-Long-Running-Query-Monitoring-/blob/main/Longrunning_Query_with_WaitForDelay.png)
+
+*Ref 2.2: Long Running Query Detection*
 This screenshot shows the query monitoring logic used to identify requests exceeding the 60 second execution threshold.
 
-![Long-Running Query Detection](screenshots/02-long-running-query.png)
+![Long-Running Query Detection](https://github.com/Vishnupd/SQL-Server-Long-Running-Query-Monitoring-/blob/main/Long%20running%20Query%20_Detected.png)
 
 ### 3. Capture Query and Blocking Information
 
-Once a long-running query is detected, the procedure captures detailed information about the request, including the SPID, login, host, blocking session ID, command type, elapsed time, start time, and SQL statement.
+Once a long running query is detected, the procedure captures detailed information about the request, including the SPID, login, host, blocking session ID, command type, elapsed time, start time, and SQL statement.
 
 The `blocking_session_id` value helps identify whether another SQL Server session is blocking the detected request.
 
 *Ref 3: Query and Session Details*
 This screenshot shows the detailed SQL Server session information captured for the detected long-running query, including blocking information and the SQL statement.
 
-![Query and Session Details](screenshots/03-query-session-details.png)
+![Query and Session Details](https://github.com/Vishnupd/SQL-Server-Long-Running-Query-Monitoring-/blob/main/Long%20running%20Query%20_Detected.png)
 
 ### 4. Generate an HTML Monitoring Report
 
@@ -132,7 +138,7 @@ The notification helps the database administrator quickly identify:
 *Ref 6: Long-Running Query Alert*
 This screenshot shows the automated HTML email received when a long-running query was detected.
 
-![Long-Running Query Alert](screenshots/06-long-running-query-alert.png)
+![Long-Running Query Alert](https://github.com/Vishnupd/SQL-Server-Long-Running-Query-Monitoring-/blob/main/Longrunning_Query_Email.png)
 
 ### 7. Investigate and Troubleshoot Long-Running Queries
 
